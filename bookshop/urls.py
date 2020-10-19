@@ -1,6 +1,7 @@
 from django.urls import path
-from bookshop import views
+from bookshop.views import index, login
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', index, name='index'),
+    path('login', login, name='login')
 ]
