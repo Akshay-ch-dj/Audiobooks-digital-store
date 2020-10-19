@@ -3,11 +3,11 @@
 ---
 
 ## Project Idea (as per june 15, 2020)
-Malayalam Audible like site
+Amazon Audible like site
 
 A website in malayalam, in which people can post there short stories novels, etc both in text and in audible,
-Signed user can pay a monthly premium to access it or purchase them even at a lower rates of 10 rupees.\
-* Full medium style text editor (get that from your blognotes app)\
+Signed user can pay a monthly premium to access it or purchase them even at a lower rates of 10 rupees.
+* Full medium style text editor (get that from your blognotes app)
 * An inbuilt reader option.
 * Inbuilt audioplayer for the audiobooks.
 * Comments and ratings below each story.

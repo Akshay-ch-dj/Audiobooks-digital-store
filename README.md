@@ -1,2 +1,2 @@
 # Audiobooks-digital-store
-A digital store in which creators and readers can register, buy and sell their books and audio-books, complete with full online payment inbuilt reader and audio-player.
+A digital book store where writers can register and sell their books and audio-books, complete app with full online payment, inbuilt book reader and audio-player.

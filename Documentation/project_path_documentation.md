@@ -49,10 +49,10 @@ Books and Audiobooks store project made with django,
 
    * Basic things needed in the `requirements.txt`
       ```txt
-      Django>=3.1,<3.2.0
+      Django>=3.1.2,<3.2.0
 
-      flake8>=3.8.0,<3.8.3
-      psycopg2>=2.8.5,<2.9.0
+      flake8>=3.8.4,<3.9.0
+      psycopg2>=2.8.6,<2.9.0
       Pillow>=7.2.0,<7.3.0
       ```
 3. ### Django Help
@@ -66,7 +66,7 @@ Books and Audiobooks store project made with django,
      ```
 5. ## Django Project initialization
    ---
-   1. To start a django project, Project name: digibook_store
+   1. To start a django project, Project name: digibook_store in the current folder.
    ```python
     django-admin startproject digibook_store .
    ```
@@ -89,39 +89,49 @@ Books and Audiobooks store project made with django,
              'django.contrib.messages',
              'django.contrib.staticfiles',
              'django.contrib.postgres',
-             '<app_name'>
+             '<app_name>',
          ]
          ```
 
     2. Setting up the **"template"** directory, setting it in the root, then inside each apps templates go\
     specify django where to look for those html templates,
+    IMP: This settings changes in new django 3.1.
+    * The old django 3.0, that uses os.path.join, (joining strings of paths, BASE_DIR set is a string)
+    * From version 3.1, it uses pathlib.path function, now it is easier to chain paths,
          ```python
-          TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-
+          TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates') # only for older
+          # From django 3.1 -
+          # BASE_DIR = Path(__file__).resolve().parent.parent (set already)
+          TEMPLATE DIR = BASE_DIR/'templates'
           # specify in the TEMPLATES LIST
-         TEMPLATES = [
-             {
-                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
-                 'DIRS': [TEMPLATE_DIR],
-                 'APP_DIRS': True,
-                 'OPTIONS': {
-                     'context_processors': [
-                         'django.template.context_processors.debug',
-                         'django.template.context_processors.request',
-                         'django.contrib.auth.context_processors.auth',
-                         'django.contrib.messages.context_processors.messages',
-                     ],
-                 },
-             },
-         ]
+           TEMPLATES = [
+               {
+                   'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                   'DIRS': [TEMPLATE_DIR],
+                   'APP_DIRS': True,
+                   'OPTIONS': {
+                       'context_processors': [
+                           'django.template.context_processors.debug',
+                           'django.template.context_processors.request',
+                           'django.contrib.auth.context_processors.auth',
+                           'django.contrib.messages.context_processors.messages',
+                       ],
+                   },
+               },
+           ]
          ```
+        * As from django 3.1, it is recommended to keep the template files separated in their respective app folders,\
+          giving a more modular nature to it
+
     3. Set the STATIC FILES directory (all the css, javascript, images go there).
         ```python
-         STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+         STATIC_ROOT = os.path.join(BASE_DIR, 'static') # only up to django 3.0
+         STATIC_ROOT = BASE_DIR/'static'
          STATIC_URL = '/static/'
 
          STATICFILES_DIRS = [
-            os.path.join(BASE_DIR, 'app/static')
+            os.path.join(BASE_DIR, 'app/static') # only up to django 3.0
+            BASE_DIR/'app/static'
          ]
         ```
         So the static directory also setup in the root,\
@@ -161,6 +171,7 @@ Books and Audiobooks store project made with django,
 
    * Also listing commands, `\dt`(list tables), `\du`(list users), `\l`(list databases),\
    `\d`(list table), `\c`(connect to), to quit from psql use `\q`.
+   * **TIP**: Use the `\! clear`, to clear the screen, or use `\!` to use any system commands inside postgres, terminal\
      ```sql
      /* Connect to a database */
      \c <db_name>
@@ -192,7 +203,7 @@ Books and Audiobooks store project made with django,
    * With django, dont need to run any database control commands, Django ORM, got it all covered, can do all
    CRUD operations with Django models.
 
-   * Only need to create a database for our app, do that with `CREATE DATABASE Abdmdb;`, so "Abdmdb" is the database for our app.
+   * Only need to create a database for our app, do that with `CREATE DATABASE Ab_db;`, so "Ab_db" is the database for our app.
 
    * Setup **pgadmin**, to visualize the data,
      * First create a server(local, pgadmin is a browser based tool), in the opened app, use any `name`,\
@@ -219,4 +230,4 @@ Books and Audiobooks store project made with django,
     * Django comes in with a pre-built [user model](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/), with username, first_name, last_name, email and password.
     * If one need to don't use this model,(like, needs email instead of username), needs to create a custom user model, refer it in `settings.py` before the initial migration.
     ```python
-    AUTH_USER_MODEL = '<app>.User'
+    AUTH_USER_MODEL = '<app_name>.User'
