@@ -231,3 +231,21 @@ Books and Audiobooks store project made with django,
     * If one need to don't use this model,(like, needs email instead of username), needs to create a custom user model, refer it in `settings.py` before the initial migration.
     ```python
     AUTH_USER_MODEL = '<app_name>.User'
+
+9. ### Adding templates and styling (prototype phase)
+   * Using Semantic UI and, Using bootstrap 5 alpha 2(just cz it is a prototype, and simple also to learn it)
+   * Adding bootstrap 5 alpha 2, refer to [my own notes](https://github.com/Akshay-ch-dj/CSS-Responsive-layouts-projects/blob/main/Bootsrap_practice/Bootstrap%205%20learn/Bootstrap5.md).
+   * The static files added in a static folder inside the project folder (which not added to the main repo or deployment)
+   ```python
+   static--|_css------|_admin.css
+           |          |_font awesome
+           |          |_bootstrap.css
+           |          |_style.css(custom)
+           |
+           |_js ---------|_bootstrap.js
+           |_img         |_main.js
+           |_webfonts
+   ```
+   * Then the collectstatic is used to bring all the static files to main `static` folder in the root.
+   * Using `{% load static %}` links the bootstrap css, js and local css, js to the `base.html`
+   * The `base.html` created directly in the root templates folder that also contains, the partials folder.
