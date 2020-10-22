@@ -148,3 +148,6 @@ dmypy.json
 
 # Virtual environment files
 Ab-local
+
+
+/static/

@@ -246,6 +246,11 @@ Books and Audiobooks store project made with django,
            |_img         |_main.js
            |_webfonts
    ```
-   * Then the collectstatic is used to bring all the static files to main `static` folder in the root.
+   * Then the [collectstatic](https://docs.djangoproject.com/en/3.1/howto/static-files/#deployment) is used to bring all the static files to main `static` folder in the root.
    * Using `{% load static %}` links the bootstrap css, js and local css, js to the `base.html`
    * The `base.html` created directly in the root templates folder that also contains, the partials folder.
+   * Use the `{% include 'partials/<item>' %}`, jinja to include the partials in any template.
+   * The index, login etc all gets [extended](https://docs.djangoproject.com/en/3.0/ref/templates/language/#template-inheritance) from it.
+   * To add `static` in the root to gitignore use `\static\`.
+   * Add VS code extension for Django by *Baptiste Darthenay*, for the ese of typing and color highlighting of django template language.
+   *

@@ -1,1 +1,6 @@
 /* Main css style */
+
+.login-header {
+  text-align: center;
+  color: red;
+}

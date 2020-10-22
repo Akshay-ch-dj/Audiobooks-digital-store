@@ -57,7 +57,7 @@ ROOT_URLCONF = 'Digibook_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,5 +126,5 @@ STATIC_ROOT = BASE_DIR/'static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR/'app/static'
+    BASE_DIR/'Digibook_store/static'
 ]
