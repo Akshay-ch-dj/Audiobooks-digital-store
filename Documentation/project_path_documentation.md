@@ -203,7 +203,7 @@ Books and Audiobooks store project made with django,
    * With django, dont need to run any database control commands, Django ORM, got it all covered, can do all
    CRUD operations with Django models.
 
-   * Only need to create a database for our app, do that with `CREATE DATABASE Ab_db;`, so "Ab_db" is the database for our app.
+   * Only need to create a database for our app, do that with `CREATE DATABASE ab_db;`, so "ab_db" is the database for our app.
 
    * Setup **pgadmin**, to visualize the data,
      * First create a server(local, pgadmin is a browser based tool), in the opened app, use any `name`,\
@@ -216,7 +216,7 @@ Books and Audiobooks store project made with django,
        DATABASES = {
           'default': {
               'ENGINE': 'django.db.backends.postgresql',
-              'NAME': 'Abdmdb', # The db name given
+              'NAME': 'ab_db', # The db name given
               'USER': 'postgres',
               'PASSWORD': '<password>',
               'HOST': 'localhost',
@@ -225,6 +225,8 @@ Books and Audiobooks store project made with django,
         }
       ```
       Now the django, postgres integration completed.
+    * TIP: To use only the server when needed in windows machine, run(windows + R) the `services.msc`
+      then start/stop the postgress server(here: postgressql-x64-13) as per the need,
 
 8. ### Creating custom user model in Django,(IMPORTANT: MUST DO BEFORE FIRST MIGRATION)
     * Django comes in with a pre-built [user model](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/), with username, first_name, last_name, email and password.
@@ -234,7 +236,7 @@ Books and Audiobooks store project made with django,
 
 9. ### Adding templates and styling (prototype phase)
    * Using Semantic UI and, Using bootstrap 5 alpha 2(just cz it is a prototype, and simple also to learn it)
-   * Adding bootstrap 5 alpha 2, refer to [my own notes](https://github.com/Akshay-ch-dj/CSS-Responsive-layouts-projects/blob/main/Bootsrap_practice/Bootstrap%205%20learn/Bootstrap5.md).
+   * Adding bootstrap 5 alpha 3, refer to [my own notes](https://github.com/Akshay-ch-dj/CSS-Responsive-layouts-projects/blob/main/Bootsrap_practice/Bootstrap%205%20learn/Bootstrap5.md).
    * The static files added in a static folder inside the project folder (which not added to the main repo or deployment)
    ```python
    static--|_css------|_admin.css
@@ -253,4 +255,17 @@ Books and Audiobooks store project made with django,
    * The index, login etc all gets [extended](https://docs.djangoproject.com/en/3.0/ref/templates/language/#template-inheritance) from it.
    * To add `static` in the root to gitignore use `\static\`.
    * Add VS code extension for Django by *Baptiste Darthenay*, for the ese of typing and color highlighting of django template language.
-   *
+
+* Bootsrap dark themed navbar added in the partials,
+* Seperated title (in the head tag for each page with `<title>{% block title %} {% endblock title %}</title>`.
+
+### Creating admin and accessing superuser
+
+---
+
+1. Create [superuser](https://docs.djangoproject.com/en/3.1/topics/auth/default/#creating-superusers), `python manage.py createsuperuser`.
+2. Before that it needed to change the settings to use postgresql as mentioned previously.
+3. u-name: akshay.dev, aks.dev@, digibooks.1
+4. For pgadmin like interface for sqlite(it did'nt store data to servers instead in a single `db.sqlite3` file). Go to [sqliteonline](https://sqliteonline.com/) and put that file in to examinte the sqlite db structure.
+5. Enter admin area (/admin/), login with the superuser password. (enable cookies to login)
+6.
