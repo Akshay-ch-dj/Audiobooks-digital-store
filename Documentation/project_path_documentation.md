@@ -268,4 +268,71 @@ Books and Audiobooks store project made with django,
 3. u-name: akshay.dev, aks.dev@, digibooks.1
 4. For pgadmin like interface for sqlite(it did'nt store data to servers instead in a single `db.sqlite3` file). Go to [sqliteonline](https://sqliteonline.com/) and put that file in to examinte the sqlite db structure.
 5. Enter admin area (/admin/), login with the superuser password. (enable cookies to login)
-6.
+
+## MODELS IN THE PROJECT
+
+---
+
+* Eg of creating a simple django model,
+
+  ```python
+  from django.db import models
+  # Create your models here.
+  class Book(models.Model):
+      name = models.CharField(max_length=80)
+      pages = models.IntegerField()
+  ```
+
+* Look the django [documentation](https://docs.djangoproject.com/en/3.1/intro/tutorial02/#creating-models) for more info about models.
+* Change your models (in models.py).
+* Run python manage.py makemigrations to create migrations for those changes
+* Run python manage.py migrate to apply those changes to the database.
+* TIP: Use `python manage.py check`, python manage.py check this checks for any problems in your project without making migrations or touching the database.
+* Models are created in bookshop app in a separate python package("model" folder with `__init__.py`), not all of them created in a single `models.py`, aids the modular nature
+* Setup the django dev environment in VScode with Django snippets, AREPL, Python doc strings etc.
+
+### 1. Book Model
+
+---
+
+1. id - auto increment id for the Book Table for DB.
+
+    * Data type "int".
+    * id - INT (serial int later if needed into other more secure uuid or something)
+      (Django creates an id field automatically)
+
+2. Need to connect author to book model - An author who is posting the book.
+
+     * Book and author table can be connected using a FOREIGN KEY
+     * author INT (FOREIGN KEY [From author table])
+       (The entire author is connected to the book- can attach name, details, image from author table/db to the book listing.)
+
+3. title - STR (MODEL-PRICE) - Title of the book,
+4. description - TEXT
+
+5. price - INT (req)
+6. Discount - INT (req)
+
+7. genre - STR (Dropdown different genres UI element(admin))
+
+8. Listing Date(list_date) - DATE (auto fetch)
+9. File path (for small files or books):
+10. File link (for large files and audio books):
+
+11. is_published - BOOL (def: True) (the produced set to be published by default)
+12. thumbnail - (image)
+13. Product Image - STR (required) (db storing the location of the image: so STR)
+
+    six sub-images (not necessary)
+
+    photo_1: STR
+
+    photo_2: STR
+
+    photo_3: STR
+
+    photo_4: STR
+
+    photo_5: STR
+
+    photo_6: STR

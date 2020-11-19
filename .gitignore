@@ -151,3 +151,6 @@ Ab-local
 
 
 /static/
+vscode-django
+settings.json
+.vscode
