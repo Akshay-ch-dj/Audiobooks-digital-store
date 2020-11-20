@@ -321,18 +321,18 @@ Books and Audiobooks store project made with django,
 
 11. is_published - BOOL (def: True) (the produced set to be published by default)
 12. thumbnail - (image)
-13. Product Image - STR (required) (db storing the location of the image: so STR)
 
-    six sub-images (not necessary)
+### 2. BookImages Model
 
-    photo_1: STR
+To add image of the book added as an inline field.
+Image 1
+Image 2
+...
+Can have as many images as user needed.
 
-    photo_2: STR
-
-    photo_3: STR
-
-    photo_4: STR
-
-    photo_5: STR
-
-    photo_6: STR
+* Book, BookImages model created-> migrated and registered in, admin.
+* Now it needed to get the foreign key related imagefield to the same page of book in the admin area.
+* So need to customize the admin, admin customized, the Book Images added as inline
+* In order to make link or file upload necessary, a clean validation is added in the model
+* Need to add the description to list view and it need to be short, show its full form only when it is hovered over with mouse.\
+With the use of format_html utility class from django description is added as a html element with title as full item, so when hovered it is gonna displayed fully.
