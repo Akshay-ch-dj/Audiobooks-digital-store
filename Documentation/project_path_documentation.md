@@ -336,3 +336,19 @@ Can have as many images as user needed.
 * In order to make link or file upload necessary, a clean validation is added in the model
 * Need to add the description to list view and it need to be short, show its full form only when it is hovered over with mouse.\
 With the use of format_html utility class from django description is added as a html element with title as full item, so when hovered it is gonna displayed fully.
+
+### Adding custom filters to django
+
+---
+
+* Recommended custom filter path. app/templatetags/<my_filters.py>. Use the [official documentation](https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/) for more details.
+* The filter to convert the price to string and adding comma added.
+* Used the filter along with some other tools to modify the display of details in the admin page.
+
+
+* There is a problem with the display as the info title is `get_XXXX`, to change that back to original, use `get_xxxx.short_description = "<desired_name>`.
+* Added dummy fields
+
+### Adding views
+
+*
