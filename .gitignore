@@ -155,3 +155,7 @@ vscode-django
 settings.json
 .vscode
 uploads
+Digibook_store/static/css/bootstrap.css
+Digibook_store/static/css/bootstrap.css.map
+Digibook_store/static/js/bootstrap.bundle.js.map
+Digibook_store/static/js/bootstrap.bundle.js

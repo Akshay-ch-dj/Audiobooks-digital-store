@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
+{% load my_filters %}
+{% load humanize %}
+
 {% block title %}
    index page
 {% endblock title %}
 
 {% block content %}
   <h1>Welcome to Index Page</h1>
+  {% for book in books %}
+
+    <p>{{ book.price | insertComma }}</p>
+
+  {% endfor %}
+
 {% endblock content %}

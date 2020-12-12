@@ -1,27 +1,39 @@
 # Audiobooks Digital store Project
----
 
-Books and Audiobooks store project made with django,
+## Books and Audiobooks store project made with django,
 
 1. ### Create a python virtual environment for the project. (on windows)
+
+    ---
+   * Using venv(which is a subset of [virtualenv](https://virtualenv.pypa.io/en/latest/)), which is the recommended method for creating virtual environments starting Python 3.5. and comes inbuilt.
+
    * lets name the local environment Ab-local
+
      ```bash
      python -m venv Ab-local
      ```
+
    * To activate, run the script on windows terminal
+
      ```bash
      Ab-local\Scripts\activate.bat
      ```
+
      On git-bash or linux
+
      ```bash
      # cd to Ab-local\Scripts, then run
      . activate
      ```
+
    * To deactivate, just type deactivate with environment active
+
      ```bash
      deactivate
      ```
+
 2. ### To update, install pip, python..etc
+
    * In linux,
 
       ```bash
@@ -35,6 +47,7 @@ Books and Audiobooks store project made with django,
       # To install requirements.txt
       pip install -r requirements.txt
       ```
+
    * Install required packages with `pip install`
 
    * To Show all the packages installed,
@@ -45,9 +58,11 @@ Books and Audiobooks store project made with django,
       # To create a requirements.txt with current files
       pip freeze > requirements.txt
       ```
+
    * Use the [gitignore.io](https://www.toptal.com/developers/gitignore) to setup `.gitignore` file, also add the local environment folder to gitignore, (only need the requirements.txt in github)
 
    * Basic things needed in the `requirements.txt`
+
       ```txt
       Django>=3.1.2,<3.2.0
 
@@ -55,31 +70,43 @@ Books and Audiobooks store project made with django,
       psycopg2>=2.8.6,<2.9.0
       Pillow>=7.2.0,<7.3.0
       ```
+
 3. ### Django Help
 
    * To get help with Django commands
+
      ```bash
      django-admin --help
 
      # manage.py commands
      python manage.py help
      ```
-5. ## Django Project initialization
+
+4. ## Django Project initialization
+
    ---
    1. To start a django project, Project name: digibook_store in the current folder.
+
    ```python
     django-admin startproject digibook_store .
    ```
-   2. To see the basic boilerplate run the localserver, go to localaddress to see the page, `127.0.0.1:8000`
+
+   1. To see the basic boilerplate run the localserver, go to localaddress to see the page, `127.0.0.1:8000`
+
    ```python
     python manage.py runserver 0.0.0.0:8000
    ```
-   3. To start a new app, create a main app for the models (set the User model if needed)
+
+   1. To start a new app, create a main app for the models (set the User model if needed)
+
    ```python
     python manage.py startapp <app_name>
    ```
-6. ## Django basic `settings.py` settings
+
+5. ## Django basic `settings.py` settings
+
     1. Add the created apps to the `settings.py`, `INSTALLED_APPS` (add the postgres too,)
+
          ```python
          INSTALLED_APPS = [
              'django.contrib.admin',
@@ -98,6 +125,7 @@ Books and Audiobooks store project made with django,
     IMP: This settings changes in new django 3.1.
     * The old django 3.0, that uses os.path.join, (joining strings of paths, BASE_DIR set is a string)
     * From version 3.1, it uses pathlib.path function, now it is easier to chain paths,
+
          ```python
           TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates') # only for older
           # From django 3.1 -
@@ -120,10 +148,12 @@ Books and Audiobooks store project made with django,
                },
            ]
          ```
+
         * As from django 3.1, it is recommended to keep the template files separated in their respective app folders,\
           giving a more modular nature to it
 
-    3. Set the STATIC FILES directory (all the css, javascript, images go there).
+    1. Set the STATIC FILES directory (all the css, javascript, images go there).
+
         ```python
          STATIC_ROOT = os.path.join(BASE_DIR, 'static') # only up to django 3.0
          STATIC_ROOT = BASE_DIR/'static'
@@ -134,6 +164,7 @@ Books and Audiobooks store project made with django,
             BASE_DIR/'app/static'
          ]
         ```
+
         So the static directory also setup in the root,\
         But the django admin static files are on another directory, to set all of them together\
         Also instead of every time adding static files directly to that(like only the compiled css and js)\
@@ -142,14 +173,17 @@ Books and Audiobooks store project made with django,
         Now the STATIC_ROOT contains, all our custom static folders and files, also the admin css, js files\
         when it is deploying the static files taken from this root.
 
-    4. Also set up media directory (only if needed),
+    2. Also set up media directory (only if needed),
+
         ```python
          # Tells django where to look and store media.
          MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
          MEDIA_URL = '/media/'
         ```
-7. ## Postgress installation and setup local, and integration with django
+
+6. ## Postgress installation and setup local, and integration with django
+
    ---
 
    * Install `pscopg2` using pip.
@@ -172,12 +206,14 @@ Books and Audiobooks store project made with django,
    * Also listing commands, `\dt`(list tables), `\du`(list users), `\l`(list databases),\
    `\d`(list table), `\c`(connect to), to quit from psql use `\q`.
    * **TIP**: Use the `\! clear`, to clear the screen, or use `\!` to use any system commands inside postgres, terminal\
+
      ```sql
      /* Connect to a database */
      \c <db_name>
      ```
 
    * Basic database commands
+
      ```sql
      /* Creating a database */
      CREATE DATABASE <name>;
@@ -200,6 +236,7 @@ Books and Audiobooks store project made with django,
      /* others */
      /* Use "WHERE", "AND", "IN", "BETWEEN", "LIKE", "ILIKE" etc for sorting,*/
      ```
+
    * With django, dont need to run any database control commands, Django ORM, got it all covered, can do all
    CRUD operations with Django models.
 
@@ -224,20 +261,27 @@ Books and Audiobooks store project made with django,
           }
         }
       ```
-      Now the django, postgres integration completed.
-    * TIP: To use only the server when needed in windows machine, run(windows + R) the `services.msc`
-      then start/stop the postgress server(here: postgressql-x64-13) as per the need,
 
-8. ### Creating custom user model in Django,(IMPORTANT: MUST DO BEFORE FIRST MIGRATION)
+      Now the django, postgres integration completed.
+
+   * TIP: To use only the server when needed in windows machine, run(windows + R) the `services.msc`
+     then start/stop the postgress server(here: postgressql-x64-13) as per the need,
+
+7. ### Creating custom user model in Django,(IMPORTANT: MUST DO BEFORE FIRST MIGRATION)
+
     * Django comes in with a pre-built [user model](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/), with username, first_name, last_name, email and password.
     * If one need to don't use this model,(like, needs email instead of username), needs to create a custom user model, refer it in `settings.py` before the initial migration.
+
     ```python
     AUTH_USER_MODEL = '<app_name>.User'
+    ```
 
-9. ### Adding templates and styling (prototype phase)
+8.  ### Adding templates and styling (prototype phase)
+
    * Using Semantic UI and, Using bootstrap 5 alpha 2(just cz it is a prototype, and simple also to learn it)
    * Adding bootstrap 5 alpha 3, refer to [my own notes](https://github.com/Akshay-ch-dj/CSS-Responsive-layouts-projects/blob/main/Bootsrap_practice/Bootstrap%205%20learn/Bootstrap5.md).
    * The static files added in a static folder inside the project folder (which not added to the main repo or deployment)
+
    ```python
    static--|_css------|_admin.css
            |          |_font awesome
@@ -248,6 +292,7 @@ Books and Audiobooks store project made with django,
            |_img         |_main.js
            |_webfonts
    ```
+
    * Then the [collectstatic](https://docs.djangoproject.com/en/3.1/howto/static-files/#deployment) is used to bring all the static files to main `static` folder in the root.
    * Using `{% load static %}` links the bootstrap css, js and local css, js to the `base.html`
    * The `base.html` created directly in the root templates folder that also contains, the partials folder.
@@ -344,10 +389,14 @@ With the use of format_html utility class from django description is added as a 
 * Recommended custom filter path. app/templatetags/<my_filters.py>. Use the [official documentation](https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/) for more details.
 * The filter to convert the price to string and adding comma added.
 * Used the filter along with some other tools to modify the display of details in the admin page.
-
-
 * There is a problem with the display as the info title is `get_XXXX`, to change that back to original, use `get_xxxx.short_description = "<desired_name>`.
 * Added dummy fields
+* Using format_html to truncate the description to the tile of the tag, revels when hovering.
+
+### Custom admin panel template with django
+
+* Django admin panel giving weird looks, create a basic custom admin panel template for django
+* Use this [realpython doc](https://realpython.com/customize-django-admin-python/) to get in touch with the basics.
 
 ### Adding views
 

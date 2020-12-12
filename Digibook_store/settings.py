@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    # For performing the comma seperation ext app
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

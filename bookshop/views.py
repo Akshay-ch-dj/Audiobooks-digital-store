@@ -8,8 +8,11 @@ def index(request):
     """View for the index page
     """
     books = Book.objects.all()
-    print(books)
-    return render(request, 'index.html')
+
+    context = {
+        'books': books
+    }
+    return render(request, 'index.html', context)
 
 
 def login(request):
