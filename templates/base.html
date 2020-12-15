@@ -3,33 +3,34 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% comment %} Title block {% endcomment %}
-    <title>{% block title %} {% endblock title %}</title>
+  {% comment %} Title block {% endcomment %}
+  <title>{% block title %} {% endblock title %}</title>
 
-    <!-- custom css -->
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  <!-- custom css -->
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
 
-    <!-- Bootstrap css -->
-    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}">
 </head>
+
 <body>
-    <!-- Including navbar -->
-    {% include 'partials/_navbar.html' %}
+  <!-- Including navbar -->
+  {% include 'partials/_navbar.html' %}
 
-    <!-- Content -->
-    {% block content %}
+  <!-- Content -->
+  {% block content %}
 
-    {% endblock content %}
+  {% endblock content %}
 
-    <!-- Popper JS for bootstrap -->
-
-    <!-- Bootstrap JS -->
-    <script src="{% static "js/bootstrap.bundle.js" %}"></script>
-    <!-- Local JS -->
-    <script src="{% static "js/main.js" %}"></script>
+  <!-- Bootstrap JS -->
+  <script src="{% static "bootstrap/js/bootstrap.bundle.js" %}"></script>
+  <!-- Local JS -->
+  <script src="{% static "js/main.js" %}"></script>
 </body>
+
 </html>

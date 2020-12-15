@@ -276,7 +276,7 @@
     AUTH_USER_MODEL = '<app_name>.User'
     ```
 
-8.  ### Adding templates and styling (prototype phase)
+8. ### Adding templates and styling (prototype phase)
 
    * Using Semantic UI and, Using bootstrap 5 alpha 2(just cz it is a prototype, and simple also to learn it)
    * Adding bootstrap 5 alpha 3, refer to [my own notes](https://github.com/Akshay-ch-dj/CSS-Responsive-layouts-projects/blob/main/Bootsrap_practice/Bootstrap%205%20learn/Bootstrap5.md).
@@ -400,4 +400,75 @@ With the use of format_html utility class from django description is added as a 
 
 ### Adding views
 
-*
+* Added a basic context in the book view to render the whole model and display individual ones with jinja looping
+* Need to build a card for each book with bootstrap, to display it in frontend.
+
+### Removing previously committed unwanted files from the repo
+
+* To completely remove tracking a file. and delete it from the repository.
+
+  ```bash
+  # Edit the gitignore
+
+  # Do a remove cached to the file, if there is a lot of files do a full rm
+  git rm --cached <file>
+  # To all
+  git rm -r --cached .
+
+  Then re add the files
+  git add .
+  ```
+
+* To stop tracking a file from this commit foreward
+
+  ```bash
+  # run this with the file path
+
+  git update-index --assume-unchanged path/to/file.txt
+
+  To make Git track the file again, simply run:
+
+  git update-index --no-assume-unchanged path/to/file.txt
+  ```
+
+* To completely remove a file and its history,
+
+  ```bash
+  git filter-branch
+  ```
+
+  it will literally rewrite your project’s commits. This actually is a great tool for some actions, and can do all sorts of stuff like totally removing an author’s commits to moving the project root folder around. The command to remove a file from all revisions is.
+
+  ```bash
+  git filter-branch --index-filter 'git rm --cached <file>' HEAD
+  ```
+
+  This action can definitely be useful when you need to blow out sensitive or confidential information that may have been placed in your repository.
+
+## Building a card with bootstrap 5
+
+* Bootstrap updated to V5 - beta 1.
+* Bootstrap completely changed that introduces flexbox capabilities, [mixing flex alignments with automargins](https://getbootstrap.com/docs/5.0/utilities/flex/#auto-margins)
+
+
+## Setting up beautify in VSCode for django-html
+
+* Step-01: install the extension Beautify from HookyQR
+
+* Step-02: under your project folder, find.vscode/settings.jsonand make the following configurations:
+
+  ```json
+  {
+    "beautify.language": {
+      "html": [
+        "django-html"
+      ]
+    },
+    "[django-html]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "HookyQR.beautify"
+    }
+  }
+  ```
+
+* Then your django-html will automatically formatted every time you save the file.
